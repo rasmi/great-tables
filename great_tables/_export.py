@@ -158,6 +158,8 @@ def save(
     if web_driver == "chrome":
         wdriver = webdriver.Chrome
         wd_options = webdriver.ChromeOptions()
+        wd_options.add_argument(str("--no-sandbox"))
+        wd_options.add_argument(str("--disable-dev-shm-usage"))
     elif web_driver == "safari":
         wdriver = webdriver.Safari
         wd_options = webdriver.SafariOptions()
