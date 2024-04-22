@@ -27,6 +27,7 @@ def data_color(
     alpha: Optional[Union[int, float]] = None,
     reverse: bool = False,
     autocolor_text: bool = True,
+    rows: Optional[List[int]] = None,
 ) -> GTSelf:
     """
     Perform data cell colorization.
@@ -198,6 +199,9 @@ def data_color(
 
     # Get the internal data table
     data_table = self._tbl_data
+    # Select only a subset of rows.
+    if rows:
+        data_table = data_table.copy().iloc[rows]
 
     # If `columns` is a single value, convert it to a list; if it is None then
     # get a list of all columns in the table body
